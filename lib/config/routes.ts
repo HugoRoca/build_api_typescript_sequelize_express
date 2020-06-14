@@ -9,11 +9,12 @@ export class Routes {
     app
       .route("/payers")
       .get(this.payersController.index)
-      .post(this.payersController.create);
+      .post(this.payersController.create)
 
     app
       .route("/payers/:id")
       .get(this.payersController.show)
-      .put(this.payersController.update);
+      .put(this.payersController.update)
+      .delete(this.payersController.delete)
   }
 }

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Payer, IPayer } from "../models/payer.model";
-import { UpdateOptions } from "sequelize";
+import { UpdateOptions, DestroyOptions } from "sequelize";
 
 export class PayersController {
   public index(req: Request, res: Response) {
@@ -42,6 +42,18 @@ export class PayersController {
 
     Payer.update(params, update)
       .then(() => res.status(202).json({ data: "success" }))
+      .catch((err: Error) => res.status(500).json(err));
+  }
+
+  public delete(req: Request, res: Response) {
+    const payerId: any = req.params.id;
+    const options: DestroyOptions = {
+      where: { id: payerId },
+      limit: 1
+    };
+
+    Payer.destroy(options)
+      .then(() => res.status(204).json({ data: "success" }))
       .catch((err: Error) => res.status(500).json(err));
   }
 }

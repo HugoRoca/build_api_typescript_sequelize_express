@@ -24,7 +24,7 @@ export interface IPayment {
   amount: number;
   description: string;
   payer_id: number;
-  date_paiD: Date;
+  date_paid: Date;
   date_expiration: Date;
 }
 
@@ -87,4 +87,4 @@ Payment.belongsTo(Payer, {
   as: 'payer'
 })
 
-Payment.sync();
+// Payment.sync();

@@ -53,4 +53,4 @@ Payer.init(
     }
   );
   
-  Payer.sync()
+//Payer.sync()

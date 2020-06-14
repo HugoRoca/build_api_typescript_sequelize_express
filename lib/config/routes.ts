@@ -6,6 +6,9 @@ export class Routes {
 
   public routes(app): void {
     // ...
-    app.route("/payers").get(this.payersController.index);
+    app
+      .route("/payers")
+      .get(this.payersController.index)
+      .post(this.payersController.create);
   }
 }

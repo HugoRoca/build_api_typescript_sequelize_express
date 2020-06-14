@@ -35,16 +35,19 @@ Payer.init(
         type: new DataTypes.STRING(),
         allowNull: false
       },
-      date_created: {
-        type: new DataTypes.DATE
+      createdAt: {
+        type: new DataTypes.DATE,
+        field: 'date_created'
       },
-      date_last_updated: {
-        type: new DataTypes.DATE
+      updatedAt: {
+        type: new DataTypes.DATE,
+        field: 'date_last_updated'
       }
     },
     {
       tableName: "Payers",
-      timestamps: false,
+      timestamps: true,
+      underscored: true,
       sequelize: database // this bit is important
     }
   );

@@ -1,5 +1,6 @@
 import { Sequelize, Model, DataTypes, BuildOptions } from "sequelize";
 import { database } from "../config/database";
+import { Payment } from "./payments.model";
 
 export interface IPayer {
   name: string
@@ -24,23 +25,23 @@ Payer.init(
         allowNull: false
       },
       name: {
-        type: new DataTypes.STRING(),
+        type: DataTypes.STRING(),
         allowNull: false
       },
       identification_type: {
-        type: new DataTypes.STRING(),
+        type: DataTypes.STRING(),
         allowNull: false
       },
       identification_number: {
-        type: new DataTypes.STRING(),
+        type: DataTypes.STRING(),
         allowNull: false
       },
       createdAt: {
-        type: new DataTypes.DATE,
+        type: DataTypes.DATE,
         field: 'date_created'
       },
       updatedAt: {
-        type: new DataTypes.DATE,
+        type: DataTypes.DATE,
         field: 'date_last_updated'
       }
     },
@@ -48,8 +49,8 @@ Payer.init(
       tableName: "Payers",
       timestamps: true,
       underscored: true,
-      sequelize: database // this bit is important
+      sequelize: database
     }
   );
   
-  Payer.sync({ alter: false, force: false})
+  Payer.sync()

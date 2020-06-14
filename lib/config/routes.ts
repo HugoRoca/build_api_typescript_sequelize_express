@@ -11,6 +11,9 @@ export class Routes {
       .get(this.payersController.index)
       .post(this.payersController.create);
 
-    app.route("/payers/:id").get(this.payersController.show);
+    app
+      .route("/payers/:id")
+      .get(this.payersController.show)
+      .put(this.payersController.update);
   }
 }

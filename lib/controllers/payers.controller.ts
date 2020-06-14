@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Payer, IPayer } from "../models/payer.model";
+import { UpdateOptions } from "sequelize";
 
 export class PayersController {
   public index(req: Request, res: Response) {
@@ -27,6 +28,20 @@ export class PayersController {
           res.status(404).json({ errors: ["Payer not found"] });
         }
       })
+      .catch((err: Error) => res.status(500).json(err));
+  }
+
+  public update(req: Request, res: Response) {
+    const payerId: any = req.params.id;
+    const params: IPayer = req.body;
+
+    const update: UpdateOptions = {
+      where: { id: payerId },
+      limit: 1
+    };
+
+    Payer.update(params, update)
+      .then(() => res.status(202).json({ data: "success" }))
       .catch((err: Error) => res.status(500).json(err));
   }
 }

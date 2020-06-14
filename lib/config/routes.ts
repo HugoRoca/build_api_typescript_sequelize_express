@@ -1,12 +1,11 @@
 import { Request, Response } from "express";
-import { NodesController } from "../controllers/nodes.controller";
+import { PayersController } from "../controllers/payers.controller";
 
 export class Routes {
-  public nodesController: NodesController = new NodesController();
+  public payersController: PayersController = new PayersController();
 
   public routes(app): void {
-    app.route("/").get(this.nodesController.index);
-
-    app.route("/nodes").get(this.nodesController.index);
+    // ...
+    app.route("/payers").get(this.payersController.index);
   }
 }

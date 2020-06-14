@@ -10,5 +10,7 @@ export class Routes {
       .route("/payers")
       .get(this.payersController.index)
       .post(this.payersController.create);
+
+    app.route("/payers/:id").get(this.payersController.show);
   }
 }

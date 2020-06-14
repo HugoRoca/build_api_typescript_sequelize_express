@@ -15,4 +15,18 @@ export class PayersController {
       .then((payer: Payer) => res.status(201).json(payer))
       .catch((err: Error) => res.status(500).json(err));
   }
+
+  public show(req: Request, res: Response) {
+    const payerId: any = req.params.id;
+
+    Payer.findByPk<Payer>(payerId)
+      .then((payer: Payer | null) => {
+        if (payer) {
+          res.json(payer);
+        } else {
+          res.status(404).json({ errors: ["Payer not found"] });
+        }
+      })
+      .catch((err: Error) => res.status(500).json(err));
+  }
 }
